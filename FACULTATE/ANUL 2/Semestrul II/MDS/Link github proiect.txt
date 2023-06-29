@@ -1,0 +1,3 @@
+https://github.com/stefanoprea02/TopicTrail-Frontend
+
+https://github.com/stefanoprea02/TopicTrail-Backend
