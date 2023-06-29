@@ -1,0 +1,303 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+class Punct {
+ protected:
+ float x; float y;
+    
+public:
+    
+//          Constructori
+    Punct(float a, float b) { x=a; y=b; }
+    Punct() { x=0; y=0; }
+    Punct(const Punct& a) {x=a.x; y=a.y; }
+    
+//          Destructor
+    ~Punct() {};
+    
+//          Getteri
+    float GetX() { return x; }
+    float GetY() { return y; }
+    
+    void SetX(float valoare) { x=valoare;}
+    void SetY(float val) {y=val;}
+    
+//          Operatori
+    //friend Punct &operator= (Punct, Punct);
+    Punct &operator=(Punct b)
+    { x=b.x; y=b.y; }
+    friend ostream &operator<< (ostream &out, Punct);
+    friend istream &operator>> (istream &in, Punct&);
+    friend class Patrat;
+
+};
+
+    
+    istream &operator>>(istream &in, Punct &a)
+        { cout<<"Coordonata X a punctului este: ";
+          in>>a.x;
+          cout<<"Coordonata Y a punctului este: ";
+          in>>a.y;
+          return in;
+        }
+        
+    ostream &operator<<(ostream &out, Punct a) 
+        { out<<"Punctul este de coordonate ("<<a.x<<", "<<a.y<<")."; 
+          return out;
+        }
+        
+        
+
+
+
+
+class Patrat:public Punct {
+    
+protected:
+    Punct stanga_jos, stanga_sus, dreapta_sus, dreapta_jos;
+    float latura;
+    int valid;
+    
+public:
+//          Constructori
+    Patrat(Punct istanga_jos, float ilatura)
+     {
+    //    stanga_jos.x = istanga_jos.x;
+        stanga_jos=istanga_jos;
+    //   stanga_jos.y = istanga_jos.y;
+      
+        latura=ilatura;
+      
+     dreapta_jos.SetX(istanga_jos.GetX()+ilatura);
+     dreapta_jos.SetY(istanga_jos.GetY());
+      
+     dreapta_sus=dreapta_jos;
+     dreapta_sus.SetY(dreapta_jos.GetY()+ilatura);
+      
+     stanga_sus=istanga_jos;
+     stanga_sus.SetY(istanga_jos.GetY()+ilatura);
+      
+      
+      if( stanga_jos.GetY()-stanga_sus.GetY() == dreapta_jos.GetY()-dreapta_sus.GetY() 
+        && dreapta_jos.GetX()-stanga_jos.GetX()==dreapta_sus.GetX()-stanga_sus.GetX())
+        valid=1;
+    }
+    
+    Patrat(const Patrat &P)
+    { stanga_jos=P.stanga_jos;
+      stanga_sus=P.stanga_sus;
+      dreapta_sus=P.dreapta_sus;
+      dreapta_jos=P.dreapta_jos;
+    }
+    
+
+    Patrat() { latura=0; }
+    
+    Punct GetStangaJos() {return stanga_jos;}
+    Punct GetStangaSus() {return stanga_sus;}
+    Punct GetDreaptaSus() {return dreapta_sus;}
+    Punct GetDreaptaJos() {return dreapta_jos;}
+
+//          Destructor
+    virtual ~Patrat() {};
+    
+//          Operatori
+    Patrat &operator=(Patrat b)
+    { latura=b.latura;
+      stanga_jos=b.stanga_jos; }
+    
+    friend ostream &operator<< (ostream &out, Patrat);
+    friend istream &operator>> (istream &in, Patrat&);
+    
+//          Calcul Arie
+    float AriePatrat() {return latura*latura; }
+
+    
+    
+};
+    
+
+    istream &operator>>(istream &in, Patrat &a)
+        { in>>a.stanga_jos;
+          cout<<"Latura patratului este: ";
+          in>>a.latura;
+          return in;
+        }
+        
+    ostream &operator<<(ostream &out, Patrat a) 
+        // { out<<"Patratul este determinat de punctele de coordonate ("<<stanga_jos.x<<", "<<stanga_jos.y<<"), (";
+        //   out<<a.stanga_sus.x<<", "<<stanga_sus.y<<"), (";
+        //   out<<a.dreapta_sus.x<<", "<<dreapta_sus.y<<"), (";
+        //   out<<dreapta_jos.x<<", "<<dreapta_jos.y<<").";
+        { out<<"Patratul are urmatoarele puncte:"<<endl;
+            out<<a.stanga_sus<<endl<<a.dreapta_sus<<endl<<a.dreapta_jos<<endl<<a.stanga_jos<<endl;
+          return out;
+        }
+    
+
+class Dreptunghi : public Patrat {
+   protected:
+   float latura2;
+    
+public:
+
+//      Constructori
+    Dreptunghi(Patrat P, float ilatura2)
+    { stanga_jos=P.GetStangaJos();
+      //stanga_jos.y=P.stanga_jos.y;
+        
+      stanga_sus=P.GetStangaSus();
+      //stanga_sus.y=P.stanga_sus.y; 
+      
+    //   dreapta_jos=P.stanga_jos.x+ilatura2;
+      dreapta_jos=P.GetStangaJos();
+      dreapta_jos.SetX(P.GetStangaJos().GetX()+ilatura2);
+      
+      dreapta_sus=P.GetDreaptaSus();
+      dreapta_sus.SetY(P.GetStangaJos().GetX()+ilatura2);
+    //   dreapta_sus.x=P.stanga_sus.x+ilatura2;
+    //   dreapta_sus.y=P.stanga_sus;
+      
+      latura2=ilatura2;
+      
+     if( stanga_jos.GetY()-stanga_sus.GetY() == dreapta_jos.GetY()-dreapta_sus.GetY() 
+        && dreapta_jos.GetX()-stanga_jos.GetX()==dreapta_sus.GetX()-stanga_sus.GetX())
+        valid=1;
+
+    }
+         // constructor de copiere
+    Dreptunghi(const Dreptunghi &P)
+    { stanga_jos=P.stanga_jos;
+      stanga_sus=P.stanga_sus;
+      dreapta_sus=P.dreapta_sus;
+      dreapta_jos=P.dreapta_jos;
+    }
+    
+//      Destructor
+    virtual ~Dreptunghi() {};
+
+//      Calcul Arie
+    float ArieDreptunghi() {return latura*latura2;}
+    
+//      Operatori
+    Dreptunghi &operator=(Dreptunghi D)
+        { latura=D.latura;
+          latura2=D.latura2;
+         stanga_jos=D.stanga_jos; }
+    friend ostream &operator<< (ostream &out, Patrat);
+    friend istream &operator>> (istream &in, Patrat&);
+
+}; 
+
+istream &operator>>(istream &in, Dreptunghi &a)
+        { //???????????????????????????????????????????
+          cout<<"Latura mare a dreptunghiului este: ";
+          in>>a.latura2;
+          return in;
+        }
+
+ostream &operator<<(ostream &out, Dreptunghi a) 
+        // { out<<"Dreptunghiul este determinat de punctele de coordonate ("<<stanga_jos.x<<", "<<stanga_jos.y<<"), (";
+        //   out<<stanga_sus.x<<", "<<stanga_sus.y<<"), (";
+        //   out<<dreapta_sus.x<<", "<<dreapta_sus.y<<"), (";
+        //   out<<dreapta_jos.x<<", "<<dreapta_jos.y<<").";
+        { out<<"Dreptunghiul este determinat de punctele: \n";
+         out<<a.stanga_sus<<endl<<a.dreapta_sus<<endl<<a.dreapta_jos<<endl<<a.stanga_jos<<endl;
+          return out;
+        }
+
+
+
+
+class Romb: public Patrat{
+    protected: Punct colt;
+   
+   public:
+   
+//          Constructori
+    Romb(Patrat P, Punct colt1){
+        
+        dreapta_sus.x=colt1.x;
+        dreapta_sus.y=colt1.y;
+        
+        stanga_sus.x=dreapta_sus.x-latura; 
+        stanga_sus.y=dreapta_sus.y;
+        
+        if( stanga_jos.y-stanga_sus.y == dreapta_jos.y-dreapta_sus.y 
+        && dreapta_jos.x-stanga_jos.x==dreapta_sus.x-stanga_sus.x)
+        valid=1;
+    
+    }
+    
+    Romb(const Romb &P)
+    { stanga_jos=P.stanga_jos;
+      stanga_sus=P.stanga_sus;
+      dreapta_sus=P.dreapta_sus;
+      dreapta_jos=P.dreapta_jos;
+    }
+    
+//      Destructor
+    virtual ~Romb() {};
+
+    
+//      Calcul arie
+    float ArieRomb() {
+        float diag1=sqrt((stanga_jos.x - dreapta_sus.x)**2 +(stanga_jos.y - dreapta_sus.y)**2);
+        float diag2=sqrt((stanga_sus.x - dreapta_jos.x)**2 +(stanga_sus.y - dreapta_jos.y)**2);
+        return diag1*diag2/2;
+    }
+
+//      Operatori
+    Romb &operator=(Romb P)
+        { stanga_jos=P.stanga_jos;
+      stanga_sus=P.stanga_sus;
+      dreapta_sus=P.dreapta_sus;
+      dreapta_jos=P.dreapta_jos; }
+    friend ostream &operator<< (ostream &out, Romb);
+    friend istream &operator>> (istream &in, Romb&);
+
+};
+istream &operator>>(istream &in, Romb &a)
+        { cout<<"punct stg jos:"
+            in>>a.stanga_jos; //nu merge
+          cout<<"Latura rombului este: ";
+          in>>a.latura;
+          cout<<"Coordonata X a punctului colt este: ";
+          in>>a.colt;
+          return in;
+        }
+
+ostream &operator<<(ostream &out, Romb a) 
+        { out<<"Rombul este determinat de punctele de coordonate: \n";
+             out<<a.stanga_sus<<endl<<a.dreapta_sus<<endl<<a.dreapta_jos<<endl<<a.stanga_jos<<endl;
+          return out;
+        }
+
+
+// class Paralelogram: public Dreptunghi, public Romb { 
+    
+    
+//     public:
+    
+// //          Constructori
+//     Paralelogram(Dreptunghi D, Romb R) {
+    
+//     }
+    
+// };
+
+
+// class Trapez: public Paralelogram {
+//     float baza2;
+// };
+
+
+
+int main()
+{ char input[21];
+
+cout<<"Salut! Acest program construiește o figură geometrică după dorințele tale.\n Dorești să începem?";
+ int rasp=1;
+ 
+return 0; }

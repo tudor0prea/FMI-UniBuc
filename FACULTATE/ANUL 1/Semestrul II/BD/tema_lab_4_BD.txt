@@ -1,0 +1,13 @@
+ --12 (nu merge)
+ select department_name, department_id, sum(salary) from departments 
+ join employees using(department_id) 
+ group by department_name, department_id;
+
+--13
+/
+select max(avg( salary)) from employees group by department_id ;
+/
+--14
+select job_id, job_title, avg( salary) from jobs join employees using(job_id)
+group by job_title, job_id 
+having min(salary)=avg(salary);

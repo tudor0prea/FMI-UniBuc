@@ -1,0 +1,18 @@
+﻿<h2>Afisare articol</h2>
+<br />
+
+<p>@ViewBag.Article.Title</p>
+<p>@ViewBag.Article.Content</p>
+<p>@ViewBag.Article.Date</p>
+
+<br />
+
+<form method="post" action="/Articles/Delete/@ViewBag.Article.ArticleID">
+
+    <button type="submit">Sterge articolul</button>
+
+</form>
+
+<br />
+
+<a href="/Articles/Index">Afisare articole</a>

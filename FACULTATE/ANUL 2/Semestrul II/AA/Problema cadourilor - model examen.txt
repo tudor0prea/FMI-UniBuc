@@ -1,0 +1,27 @@
+Problema cadourilor
+
+a) Pentru a rezolva această problemă folosind un algoritm genetic, putem reprezenta cromozomul ca o permutare a cadourilor între cei doi copii. Lungimea cromozomului va fi egală cu numărul de cadouri, adică n. Fiecare genă a cromozomului va reprezenta poziția unui cadou în lista de cadouri.
+
+De exemplu, dacă avem lista de cadouri [c1, c2, c3, c4], o permutare posibilă a cromozomului ar putea fi [c3, c1, c4, c2], ceea ce înseamnă că primul copil primește cadourile c3 și c1, iar al doilea copil primește cadourile c4 și c2.
+
+Funcția de fitness poate fi definită astfel:
+
+Calculăm suma valorilor cadourilor primite de primul copil și o notăm ca S1.
+Calculăm suma valorilor cadourilor primite de al doilea copil și o notăm ca S2.
+Funcția de fitness va fi diferența absolută între S1 și S2, adică abs(S1 - S2).
+Scopul algoritmului genetic va fi să găsească permutarea cromozomului care minimizează diferența absolută între sumele valorilor cadourilor primite de cei doi copii.
+
+b) Problema poate fi formulată ca o problemă de minimizare a diferenței absolute între sumele valorilor cadourilor primite de cei doi copii sub forma unei probleme de programare liniară.
+
+Variabilele:
+x1, x2, ..., xn - variabile binare, unde xi = 1 dacă cadoul ci este atribuit primului copil și xi = 0 în caz contrar.
+
+Funcția obiectiv:
+Minimizăm diferența absolută între sumele valorilor cadourilor primite de cei doi copii, adică minimizăm |S1 - S2|. Aceasta poate fi formulată ca:
+Minimizare: |(c1 * x1) + (c2 * x2) + ... + (cn * xn) - [(c1 + c2 + ... + cn) - (c1 * x1) - (c2 * x2) - ... - (cn * xn)]|
+
+Restricții:
+
+Fiecare cadou trebuie atribuit unui singur copil: x1 + x2 + ... + xn = n/2
+Fiecare xi trebuie să fie o valoare binară: xi ∈ {0, 1}
+Aceasta este o formulare simplificată a problemei, iar construirea unui algoritm genetic și a unei probleme de programare liniară poate implica și alte considerații și restricții specifice.

@@ -1,0 +1,160 @@
+DECLARE 
+    v_nr number(4);
+    v_nume departments.department_name%TYPE; 
+
+    CURSOR c IS SELECT 
+    department_name nume, 
+    COUNT(employee_id) nr 
+    FROM departments d, employees e 
+    WHERE d.department_id=e.department_id
+    GROUP BY department_name; 
+
+    BEGIN 
+
+    OPEN c; 
+    LOOP FETCH c INTO v_nume,v_nr;
+        EXIT WHEN c%NOTFOUND; 
+        IF v_nr=0 THEN DBMS_OUTPUT.PUT_LINE('In departamentul '|| v_nume|| ' nu lucreaza angajati'); 
+            ELSIF v_nr=1 THEN DBMS_OUTPUT.PUT_LINE('In departamentul '|| v_nume|| ' lucreaza un angajat'); 
+            ELSE DBMS_OUTPUT.PUT_LINE('In departamentul '|| v_nume|| ' lucreaza '|| v_nr||' angajati'); 
+        END IF;
+    END LOOP; 
+    CLOSE c; 
+END;
+
+
+
+/
+
+
+DECLARE 
+    v_nr number(4);
+    nume_job jobs.job_title%TYPE; 
+
+    CURSOR c IS SELECT 
+    job_title job_name, 
+    COUNT(employee_id) nr 
+    FROM jobs j, employees e 
+    WHERE j.job_id=e.job_id(+)
+    GROUP BY job_title; 
+
+    BEGIN 
+
+    OPEN c; 
+    LOOP FETCH c INTO nume_job,v_nr;
+        EXIT WHEN c%NOTFOUND; 
+        IF v_nr=0 THEN DBMS_OUTPUT.PUT_LINE('nu exista angajati care lucreaza la ' || nume_job); 
+            ELSIF v_nr=1 THEN DBMS_OUTPUT.PUT_LINE('un angajat lucreaza la ' || nume_job); 
+            ELSE DBMS_OUTPUT.PUT_LINE(v_nr || ' angajati lucreaza la ' || nume_job); 
+        END IF;
+    END LOOP; 
+    CLOSE c; 
+END;
+
+
+
+/
+
+
+DECLARE 
+    type dual_ica is record
+    (
+        job_name jobs.job_title%type,
+        nr_ang number(4)
+    );
+    type tab_dual_ica is table of dual_ica;
+    
+    aux dual_ica;
+    tablou tab_dual_ica := tab_dual_ica();
+    v_nr number(4);
+    nume_job jobs.job_title%TYPE; 
+
+    CURSOR c IS SELECT 
+    job_title job_name, 
+    COUNT(employee_id) nr 
+    FROM jobs j, employees e 
+    WHERE j.job_id=e.job_id(+)
+    GROUP BY job_title; 
+
+    i number(5);
+    BEGIN 
+    
+    i:=0;
+    OPEN c; 
+    LOOP FETCH c INTO nume_job,v_nr;
+        EXIT WHEN c%NOTFOUND; 
+        tablou.extend(1);
+        i:= i+1;
+        aux.job_name := nume_job;
+        aux.nr_ang := v_nr;
+        tablou(i) := aux;
+    END LOOP; 
+    CLOSE c; 
+    
+    for i in tablou.first..tablou.last loop
+    dbms_output.put_line(tablou(i).job_name || ' --- ' || tablou(i).nr_ang);
+    end loop;
+END;
+
+/
+
+
+-- pt fiecare job in parte sa afisez si lista de angajati
+-- idee 2 cursoare, unul cu parametru care pt job-ul respectiv
+
+DECLARE 
+    type dual_ica is record
+    (
+        job_name jobs.job_title%type,
+        nr_ang number(4)
+    );
+    type tab_dual_ica is table of dual_ica;
+    
+    aux dual_ica;
+    tablou tab_dual_ica := tab_dual_ica();
+    v_nr number(4);
+    nume_job jobs.job_title%TYPE; 
+
+    CURSOR c IS SELECT 
+    e.job_id cod_job,
+    job_title job_name, 
+    COUNT(employee_id) nr 
+    FROM jobs j, employees e 
+    WHERE j.job_id=e.job_id(+)
+    GROUP BY e.job_id,job_title; 
+    
+    
+    CURSOR angajati(id_job varchar2) IS select 
+    first_name prenume, 
+    last_name nume,
+    salary venit
+    from employees e
+    where upper(job_id) = upper(id_job);
+
+    i number(5);
+    cod_job varchar2(20);
+    salariu number(10);
+    
+    
+    BEGIN 
+    i:=0;
+    OPEN c; 
+    LOOP FETCH c INTO cod_job,nume_job,v_nr;
+        EXIT WHEN c%NOTFOUND; 
+
+        dbms_output.put_line(cod_job);
+
+        dbms_output.put_line('lista pentru job-ul ' || nume_job);
+        
+        for elem in angajati(cod_job) loop
+        dbms_output.put_line(elem.nume || ' ' || elem.prenume || ' are salariul ' || elem.venit);
+        end loop;
+        dbms_output.new_line();
+        dbms_output.put_line('-----------------------');
+        dbms_output.new_line();
+        
+    END LOOP; 
+    CLOSE c; 
+END;
+
+

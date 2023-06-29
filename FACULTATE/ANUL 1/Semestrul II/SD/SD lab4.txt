@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+
+struct Node{
+    int Data;
+    int Prior;
+    Node* Next;
+} Node;
+
+
+Node* NodNou ( int valoare, int prioritate){ 
+    Node* aux=(Node*) malloc(sizeof(Node));
+
+    aux->Data=valoare, aux->Prior=prioritate, aux->Next= NULL;
+
+    return aux;
+}
+
+void Inserare(Node** Head, int valoare, int prioritate){
+
+    Node* primul=(*Head);
+
+
+    Node* aux=NodNou(valoare,prioritate);
+
+    if((*Head)->Prior > prioritate)
+        //il inseram in fata primului
+        aux->Next=*Head, (*Head)=temp;
+    else 
+        //cautam
+        {while(primul->start != NULL  && start->Next->Prior < prioritate )
+            primul=primul->Next;
+        
+        aux->Next=primul->Next, primul->Next=aux;}    
+}
+
+void Eliminare(Node** N){
+    Node* aux= *N;
+    (*N)=(*N)->Next;
+    free(aux);
+}
+
+
+
+int main()
+{
+
+    Node* n=NodNou(3,2);
+    Inserare(&n,6,1);
+    Inserare(&n,1,2);
+    Inserare(&n,3,5);
+    Inserare(&n,7,4);
+    Inserare(&n,9,1);
+
+    while((*n) != NULL){ 
+        cout<<n->Data<<" ";
+        Eliminare(&n);
+        }
+
+    return 0;
+}
+

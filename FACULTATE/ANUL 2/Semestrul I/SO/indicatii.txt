@@ -1,0 +1,1 @@
+Fisierele au fost rulate pe Oracle VM VirtualBox cu Ubuntu 20.04.1

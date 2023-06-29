@@ -1,0 +1,32 @@
+Tema laborator 3 - Oprea Tudor - grupa 141, semigrupa 2
+
+--20
+select e.employee_id, e.first_name, e.salary from employees e
+where e.salary >(select AVG(salary) from employees where job_id = e.job_id)  
+and e.department_id = ANY(select department_id from employees 
+where last_name like '%t%');
+/
+--22
+select e.first_name, e.last_name, e.department_id from employees e
+where ( (e.commission_pct = NULL) and (select commission_pct from employees 
+where employee_id = e.manager_id) <> NULL);
+/
+
+--23
+select e.first_name, e.last_name, e.department_id, e.salary, e.job_id from employees e
+where (e.salary, e.commission_pct) in (select salary, commission_pct from employees 
+where department_id = ( select d.department_id from departments d 
+where d.location_id = (select location_id from locations where lower(city) like 'toronto')));
+/
+
+--24
+select e.first_name, e.department_id, e.job_id from employees e
+where e.department_id = (select d.department_id from departments d 
+where d.location_id = (select location_id from locations where lower(city) like 'oxford'));
+
+
+
+
+
+
+													13.03.2022

@@ -1,0 +1,34 @@
+States:
+q1, start
+q2
+q3
+q4
+q5
+q6, accept
+q7, reject
+--end
+Input alphabet:
+0
+--end
+Tape alphabet:
+0
+x
+
+--end
+Transitions:
+(q1,0,0)->(q2, , ,R)
+(q1,x,x)->(q7,x,x,R)
+(q1, , )->(q7, , ,R)
+(q2,x,x)->(q2,x,x,R)
+(q2, , )->(q6, , ,R)
+(q2,0,0)->(q3,x,x,R)
+(q3,x,x)->(q3,x,x,R)
+(q3, , )->(q5, , ,L)
+(q3,0,0)->(q4,0,0,R)
+(q4,0,0)->(q3,x,x,R)
+(q4,x,x)->(q4,x,x,R)
+(q4, , )->(q7, , ,R)
+(q5,0,0)->(q5,0,0,L)
+(q5,x,x)->(q5,x,x,L)
+(q5, , )->(q2, , ,R)
+--end

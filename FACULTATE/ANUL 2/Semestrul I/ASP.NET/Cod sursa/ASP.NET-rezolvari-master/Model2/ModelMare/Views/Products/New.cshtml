@@ -1,0 +1,39 @@
+﻿@model ModelMare.Models.Product
+
+<h2>Adaugare produs</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Products", method: FormMethod.Post))
+{
+
+    @Html.Label("Denumire", "Denumire Produs")
+    <br />
+    @Html.TextBox("Denumire", null, new { @class = "form-control" })
+    <br />
+    @Html.ValidationMessageFor(m => m.Denumire, null, new { @class = "text-danger" })
+    <br /><br />
+
+    @Html.Label("Descriere", "Descriere produs")
+    <br />
+    @Html.TextArea("Descriere", new { @class = "form-control" })
+    <br />
+    @Html.ValidationMessage("Descriere", null, new { @class = "text-danger" })
+    <br /><br />
+
+    @Html.Label("DateExp", "Data expirarii")
+    <br />
+    <input asp-for="DateExp" class="form-control ui-datepicker" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")">
+    <br />
+    @Html.ValidationMessage("DateExp", null, new { @class = "text-danger" })
+    <br />
+    <br />
+
+    <label>Selectati categoria</label>
+    @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categories, "Value", "Text"),
+    "Selectati categoria", new { @class = "form-control" })
+    <br />
+    @Html.ValidationMessageFor(m => m.CategoryId, null, new { @class = "text-danger" })
+    <br /><br />
+
+    <button class="btn btn-success" type="submit">Adauga produs</button>
+            
+}

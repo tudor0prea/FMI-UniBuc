@@ -1,0 +1,3 @@
+C:/Users/Tudor/OneDrive/Desktop/FACULTATE/ANUL 2/Semestrul I/AF/cmake-build-debug/CMakeFiles/AF.dir
+C:/Users/Tudor/OneDrive/Desktop/FACULTATE/ANUL 2/Semestrul I/AF/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Tudor/OneDrive/Desktop/FACULTATE/ANUL 2/Semestrul I/AF/cmake-build-debug/CMakeFiles/rebuild_cache.dir

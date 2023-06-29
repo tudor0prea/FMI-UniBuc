@@ -1,0 +1,24 @@
+﻿@if (ViewBag.message != null)
+{
+    <h2 class="alert-success p-3 rounded-3 text-center mb-5">@ViewBag.message</h2>
+}
+
+<h2>Afisare GiftCards</h2>
+
+@foreach (GiftCard card in ViewBag.cards){
+    <div class="card">
+
+        <h3>@card.Denumire</h3>
+        <h4>@card.Descriere</h4>
+        <h5>@card.DataExp</h5>
+        <h4>@card.Procent</h4>
+        <h4>@card.Brand.Nume</h4>
+
+        <a class="btn btn-success" href="/GiftCards/Show/@card.Id">Afisare card cadou</a>
+
+    </div>
+
+    <br />
+    <br />
+}
+<a href="/GiftCards/New" class="btn btn-success">Adauga Card</a>

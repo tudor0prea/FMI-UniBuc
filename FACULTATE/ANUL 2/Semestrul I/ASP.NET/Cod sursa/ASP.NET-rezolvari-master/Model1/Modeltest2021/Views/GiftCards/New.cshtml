@@ -1,0 +1,47 @@
+﻿@model Modeltest2021.Models.GiftCard
+<h2> Formular adaugare GiftCard</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "GiftCards",
+            method: FormMethod.Post))
+{
+    @Html.Label("Denumire", "Denumire GiftCard")
+    <br />
+    @Html.TextBox("Denumire", null, new {@class = "form-control"})
+    <br />
+    @Html.ValidationMessageFor(m => m.Denumire, null, new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Descriere", "Descriere")
+    <br />
+    @Html.TextArea("Descriere", null, new {@class = "form-control"})
+    <br />
+    @Html.ValidationMessageFor(m => m.Descriere, null, new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("DataExp", "Data expirarii")
+    <br />
+    <input name="DataExp" class="form-control" type="date" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+    <br />
+    @Html.ValidationMessageFor(m => m.DataExp, null, new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Procent", "Valoarea cardului")
+    <br />
+    @Html.Editor("Procent", null, new {@class = "form-control"})
+    <br />
+    @Html.ValidationMessageFor(m => m.Procent, null, new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.DropDownListFor(m => m.BrandId, new SelectList(Model.Brands, "Value", "Text"),
+                    "Selectati Brandul", new { @class = "form-control" })
+    <br />
+    @Html.ValidationMessageFor(m => m.BrandId, null, new { @class = "text-danger" })
+    <br />
+    <br />
+    <button class="btn btn-success" type="submit">Adauga card</button>
+
+}

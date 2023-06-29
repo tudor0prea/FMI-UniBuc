@@ -1,0 +1,73 @@
+id a := a ;
+const x y := x ;
+flip f x y := f y x ;
+. g f x := g (f x) ;
+
+
+true f t := t ;
+false f t := f ;
+bool f t b := b f t ;
+
+ite b t e := bool e t b ;
+&& := bool false ;
+|| := flip bool true ;
+not := bool true false ;
+
+
+nothing n j := n ;
+just x n j := j x ;
+maybe n j m := m n j ;
+
+fromMaybe a := maybe a id ;
+isNothing := maybe true (const false) ;
+isJust := . not isNothing ;
+maybeFMap f := maybe nothing (. just f) ;
+maybeBind := maybe nothing ;
+
+
+pair a b f := f a b ;
+uncurry f p := p f ;
+
+curry f a b := f (pair a b) ;
+fst := uncurry (\a -> \b -> a) ;
+snd := uncurry (\a -> \b -> b) ;
+
+
+zero f i := i ;
+succ n f i := f (n f i) ;
+iter f i n := n f i ;
+
+one := succ zero ;
+isZero := iter (const false) true ;
+add := iter succ ;
+mul m := iter (add m) zero ;
+exp m := iter (mul m) one ;
+pred := iter (. just (maybe zero succ)) nothing ;
+sub m := iter (maybe nothing pred) (just m) ;
+lt m n := isNothing (sub m n) ;
+gt := flip lt ;
+gte m n := not (lt m n) ;
+lte := flip gte ;
+eq m n := && (lte m n) (lte n m) ;
+max m n := bool m n (lte m n) ;
+
+
+nil c n := n ;
+cons x l c n := c x (l c n) ;
+foldr f i l := l f i ;
+
+++ := flip (foldr cons) ;
+length := foldr (const succ) zero ;
+isNull := foldr (const false) true ;
+map f := foldr (. cons f) nil ;
+filter p := foldr (\a -> \l -> bool l (cons a l) (p a)) nil ;
+foldl agg def xs := foldr (\a -> \f -> \acc -> f (agg acc a)) id xs def ;
+uncons := foldr (\a -> . just (. (pair a) (maybe nil (uncurry cons)))) nothing ;
+head := . (maybeFMap fst) uncons ;
+tail := . (maybeFMap snd) uncons ;
+reverse := foldl (flip cons) nil ;
+sum := foldr add zero ;
+product := foldr mul one ;
+maximum := foldr max zero ;
+natToList := iter (\l -> maybe (cons one nil) (\p -> cons (succ (fst p)) l) (uncons l)) nil ;
+factorial := . product natToList ;

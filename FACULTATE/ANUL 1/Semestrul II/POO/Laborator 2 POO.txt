@@ -1,0 +1,64 @@
+//Laborator 2 POO 25.02.2022
+
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+class Complex
+{ double parte_reala, parte_imaginara;
+  public:
+    double Abs() 
+    { return sqrt(parte_reala*parte_reala+parte_imaginara*parte_imaginara); }
+    
+void SetParteReala(double parte_reala)
+{ this-> parte_reala=parte_reala; }
+
+void SetParteImaginara(double parte_imaginara)
+{ this-> parte_imaginara=parte_imaginara; }
+
+double GetParteReala()
+{ return this-> parte_reala; }
+
+double GetParteImaginara()
+{ return this-> parte_imaginara; }
+
+double Abs(double parte_reala, double parte_imaginara)
+{ return sqrt(parte_reala*parte_reala+parte_imaginara*parte_imaginara); }
+
+void Afisare()
+{ Complex c;
+if( parte_reala==0 && parte_imaginara==0)
+cout<<0;
+else 
+{if (parte_reala!=0)
+    cout<<parte_reala;
+if (parte_imaginara>0)
+    {if(parte_reala!=0)
+    cout<<"+"<<parte_imaginara<<"*i";
+    else cout<<parte_imaginara<<"*i";}
+else if(parte_imaginara<0)
+        cout<<parte_imaginara<<"*i";
+}
+}
+  
+    
+};   
+    
+    
+    int main()
+{ Complex c;
+//                        cin>>c.parte_reala  - nu merge ptc parte_reala este private
+double a,b, modul;
+
+cin>>a>>b;
+c.SetParteReala(a);
+c.SetParteImaginara(b);
+modul=c.Abs();
+cout<<modul<<endl;
+cout<<c.GetParteImaginara()<<endl;
+cout<<c.GetParteReala();
+
+return 0;
+}

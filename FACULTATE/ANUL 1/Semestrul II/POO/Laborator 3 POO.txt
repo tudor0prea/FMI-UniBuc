@@ -1,0 +1,115 @@
+// Laborator 3 POO - 04.03.2022
+
+#include <iostream>
+
+
+
+using namespace std;
+
+class Complex 
+{
+    double parte_reala, parte_imaginara;
+    
+    public:
+    double GetParteReala()
+    { return  parte_reala; }
+
+    double GetParteImaginara()
+    { return  parte_imaginara; }
+    
+    
+    void Afisare()
+    { Complex c;
+    if( parte_reala==0 && parte_imaginara==0)
+    cout<<0;
+    else 
+    {if (parte_reala!=0)
+        cout<<parte_reala;
+    if (parte_imaginara>0)
+        {if(parte_reala!=0)
+        cout<<"+"<<parte_imaginara<<"*i";
+        else cout<<parte_imaginara<<"*i";}
+    else if(parte_imaginara<0)
+            cout<<parte_imaginara<<"*i";
+    }
+    }
+        
+     
+
+    // - constructor fara param. - ni l da compilatorul daca nu il dam noi
+    Complex()                                                                    
+    {parte_reala=parte_imaginara=0;}
+    
+    Complex( double d, double s): parte_reala(d), parte_imaginara(s)            // - constructor cu param.
+    {}
+    
+    Complex(Complex& c):                                                        // - constructor de copiere
+    parte_reala(c.parte_reala),
+    parte_imaginara(c.parte_imaginara) {}
+    
+    ~Complex()
+    {}                                                                          // - destructor (~)
+    
+    // friend Complex operator*(Complex , Complex);
+    friend ostream &operator<<(ostream &out, Complex);
+    friend istream &operator>>(istream &in, Complex);
+    
+    Complex operator= (Complex c)                                               // - operator de atribuire
+    { parte_reala=c.parte_reala;
+     parte_imaginara=c.parte_imaginara;
+    }
+
+    };
+    
+    ostream &operator<< (ostream& out, Complex c)
+    {out<<c.parte_reala<<" "<<c.parte_imaginara;
+    return out;}
+    
+    istream &operator>> (istream& in, Complex c)
+    {in>>c.parte_reala>>c.parte_imaginara;
+    return in;}
+    
+
+
+int main()
+{ Complex c1(1,-1);
+  Complex c2;
+  
+  c2=c1;    // =(c1,c2)
+  c2.GetParteReala()==c1.GetParteReala();
+
+    c1.Afisare();
+    cout<<endl;
+    c2.Afisare();
+return 0;
+}
+
+
+
+
+
+
+// POINTERI
+class A { int *pointer;
+int *vector;
+public:
+    A() { 
+        pointer = new int;
+        *pointer =0;
+        } 
+    A(int x)
+        { pointer=new int;
+        *pointer=x;
+        }
+    A(A& a)
+        {pointer=new int;
+        *pointer=*a.pointer;}            //avem new, ne trebuie si delete - in destructor
+        
+    ~A() { delete pointer; }            // V
+
+int main()
+{ A a(3), b(a);
+int *c;
+c=new int; //alocare dinamica - implica new si delete
+delete c;
+*c=0;

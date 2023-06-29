@@ -1,0 +1,10 @@
+# ninja log v5
+1	157	6909802713119874	build.ninja	3eb453fd9b088ae3
+5	1196	6889998462069087	CMakeFiles/AF.dir/Seminar3_UnionFind.cpp.obj	4d9b2c977df63aab
+283	375	6909741715949413	AF.exe	dbd596adcc5d5920
+0	490	6902159845312813	CMakeFiles/AF.dir/Oprea_Tudor_241_obligatoriu_4.cpp.cpp.obj	3ae93e66880b2259
+0	836	6889998576387829	CMakeFiles/AF.dir/Oprea_Tudor_241_obligatoriu_1.cpp.cpp.obj	4debc034d093fb52
+6	177	6902146805318528	CMakeFiles/AF.dir/retea.cpp.obj	e7f1102e6c2f63b2
+2	337	6905902264474946	CMakeFiles/AF.dir/disjointv2.cpp.obj	bf800f952249bfd3
+3	1146	6909739447511900	CMakeFiles/AF.dir/catun.cpp.obj	2fd0f81fbbcf0380
+1	282	6909741715060924	CMakeFiles/AF.dir/clustering.cpp.obj	bc4bf214ea4142d7

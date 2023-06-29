@@ -1,0 +1,161 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+
+class Complex 
+{
+    double parte_reala, parte_imaginara;
+    
+    public:
+    double GetParteReala()
+    { return  parte_reala; }
+
+    double GetParteImaginara()
+    { return  parte_imaginara; }
+    
+    
+    void Afisare()
+    { Complex c;
+    if( parte_reala==0 && parte_imaginara==0)
+    cout<<0;
+    else 
+    {if (parte_reala!=0)
+        cout<<parte_reala;
+    if (parte_imaginara>0)
+        {if(parte_reala!=0)
+        cout<<"+"<<parte_imaginara<<"*i";
+        else cout<<parte_imaginara<<"*i";}
+    else if(parte_imaginara<0)
+            cout<<parte_imaginara<<"*i";
+    }
+    }
+    
+    friend class ComplexVector;   
+     
+    // - constructor fara param. - ni l da compilatorul daca nu il dam noi
+    Complex()                                                                    
+    {parte_reala=parte_imaginara=0;}
+    
+    Complex( double d, double s): parte_reala(d), parte_imaginara(s)            // - constructor cu param.
+    {}
+    
+    Complex(Complex& c):                                                        // - constructor de copiere
+    parte_reala(c.parte_reala),
+    parte_imaginara(c.parte_imaginara) {}
+    
+    ~Complex()
+    {}                                                                          // - destructor (~)
+    
+    // friend Complex operator*(Complex , Complex);
+    friend ostream &operator<<(ostream &out, Complex);
+    friend istream &operator>>(istream &in, Complex);
+    
+    Complex operator= (Complex c)                                               // - operator de atribuire
+    { parte_reala=c.parte_reala;
+     parte_imaginara=c.parte_imaginara;
+    }
+
+    Complex operator+ (Complex c)
+    { parte_reala+=c.parte_reala;
+      parte_imaginara+=c.parte_imaginara;
+    }
+    //modul
+    double Abs()
+    { return sqrt(parte_reala*parte_reala+parte_imaginara*parte_imaginara); }
+
+};
+    
+    //CITIRE SI AFISARE
+    ostream &operator<< (ostream& out, Complex c)
+    {out<<c.parte_reala<<" "<<c.parte_imaginara;
+    return out;}
+    
+    istream &operator>> (istream& in, Complex c)
+    {in>>c.parte_reala>>c.parte_imaginara;
+    return in;}
+    
+    
+    
+    
+class ComplexVector
+{
+    int numar_elemente;
+    
+    Complex *vector;
+    
+    
+public:
+    
+    int GetSize()
+    { return numar_elemente; };
+    //constructor
+    ComplexVector(int a)
+    { 
+        vector=new Complex[a];
+        for(int i=1;i<=a;i++)
+            cin>>vector[i]; 
+        
+    }
+    
+    //constructor fara param
+    ComplexVector(){ 
+      numar_elemente = 0;
+      vector = {};
+    };
+    
+    //constructor de copiere
+    ComplexVector(ComplexVector& v)
+    { numar_elemente = v.numar_elemente;
+      vector = v.vector;
+    };
+    
+    // destructor
+    ~ComplexVector()
+    { delete []vector;
+      numar_elemente=0;
+    }
+    
+    //suma elementelor din vector
+    Complex SumaElementelor()
+    {   Complex s;
+        for(int i=1;i<=numar_elemente;i++)
+            {s.parte_reala+=vector[i].parte_reala;
+             s.parte_imaginara+=vector[i].parte_imaginara;
+            }
+    return s;
+    }
+    
+    double* VectorulModulelor()
+    {   double* u;
+        
+        int elemente=GetSize();
+        for(int i=1;i<=elemente;i++)
+            u[i]=vector[i].Abs();
+    return u;
+    }
+    
+    
+    //void SortareCrescatoare()
+    //{ 
+    friend ostream &operator<<(ostream &out, ComplexVector);
+    friend istream &operator>>(istream &in, ComplexVector&);
+   
+};
+
+
+    //Citire si afisare vector
+    ostream &operator<< (ostream& out, ComplexVector v)
+    { int numar_elemente=v.GetSize();
+        for(int i=1;i<=numar_elemente;i++)
+        out<<v.vector[i];
+    return out;}
+    
+    istream &operator>> (istream& in, ComplexVector &v)
+    {
+        in>>v.numar_elemente;
+        for(int i=1;i<=v.numar_elemente;i++)
+            in>>v.vector[i];
+    return in;}
+
+

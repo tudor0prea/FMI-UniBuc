@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<form method="post" action="/Articles/Edit/@ViewBag.Article.Id">
+
+    <label>Titlu articol</label>
+    <input type="text" name="Title" value="@ViewBag.Article.Title" />
+    <br /><br />
+
+    <label>Continut articol</label>
+    <input type="text" name="Content" value="@ViewBag.Article.Content" />
+    <br />
+
+    <input type="hidden" name="Date" value="@DateTime.Now" />
+    <br />
+
+    <select name="CategoryId">
+
+        @foreach (var category in ViewBag.Categories)
+        {
+            if (category.Id == ViewBag.Category.Id)
+            {
+                <option selected="selected" value="@category.Id">@category.CategoryName</option>
+            }
+            else
+            {
+                <option value="@category.Id">
+                    @category.CategoryName
+                </option>
+            }
+        }
+
+    </select>
+
+    <br /><br />
+
+    <button class="btn btn-success" type="submit">Modifica articol</button>
+
+</form>
+
+

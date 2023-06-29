@@ -1,0 +1,21 @@
+# ninja log v5
+3	283	7017827064821303	CMakeFiles/untitled3.dir/test.cpp.obj	6618278475ca0d8b
+3	407	7018232355428149	CMakeFiles/untitled3.dir/pozPctFDPoligon.cpp.obj	5ee927d0a93857d8
+6	474	6992061404630303	CMakeFiles/untitled3.dir/main.cpp.obj	9b0439b8314ffed5
+351	468	7076106309162604	untitled3.exe	c0c04cb5ecf16ba2
+13	827	7076143709993507	build.ninja	4e6db47dfd8b3bc0
+5	468	7004114312793947	CMakeFiles/untitled3.dir/grahamsscan.cpp.obj	6857c68b4b7deba6
+4	666	7004117385465504	CMakeFiles/untitled3.dir/2pctInPoligonConvex.cpp.obj	c79c75eefab7ed63
+0	615	7004158556132749	CMakeFiles/untitled3.dir/monotonie.cpp.obj	9115ee760e9681ec
+10	482	7017954725836690	CMakeFiles/untitled3.dir/pctInPoligonConvex.cpp.obj	9b85cde4d14fcd4e
+1	512	7018574946652723	CMakeFiles/untitled3.dir/algoritmi_cl9.cpp.obj	2e099f651faa643d
+11	673	7025665295335238	CMakeFiles/untitled3.dir/pozitieRelativa.cpp.obj	dc931939ad666f65
+5	803	7030722465932468	CMakeFiles/untitled3.dir/muchieIlegala.cpp.obj	9af29864ca1ca660
+3	350	7076106308063668	CMakeFiles/untitled3.dir/problema4_pedagogie.cpp.obj	33e15f6a68749c66
+20	484	7076143709993507	build.ninja	4e6db47dfd8b3bc0
+1	446	7076143904069173	CMakeFiles/untitled3.dir/problema4.2_pedagogie.cpp.obj	9d55078af2bb973e
+447	768	7076143907253795	untitled3.exe	d57f104332baea50
+18	430	7076144405460326	CMakeFiles/untitled3.dir/problema4.2_pedagogie.cpp.obj	9d55078af2bb973e
+430	584	7076144406944669	untitled3.exe	d57f104332baea50
+4	469	7076144793120723	CMakeFiles/untitled3.dir/problema4.2_pedagogie.cpp.obj	9d55078af2bb973e
+470	599	7076144794377868	untitled3.exe	d57f104332baea50

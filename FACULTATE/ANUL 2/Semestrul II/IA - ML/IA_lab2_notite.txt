@@ -1,0 +1,67 @@
+P(c|x) = P(x|c)*P(c) / P(x)
+
+						Laborator 2 IA
+
+
+
+Teorie:
+
+xi categorie - (ex culoarea) MULTINOMIAL: P(xi|c) = # cu val xi pe poz i din subsetul c / # elem din subsetul c
+
+xi continua - (ex varsta) : GAUSSIAN: P(xi|c) = 1(Di *rad2 * pi) * e^(-1/2) * ((xi - Mi) / Di)^2
+
+
+-- pentru a verifica modelul avem:
+Acuratetea (Acc) = rap dintre nr de ex corect clasificate / nr total de ex
+Matricea de confuzie = matrice patratica, dimensiunea ei e data de nr de clase din setul de date
+
+	clasa reala pe linie
+	clasa prezisa pe coloane
+
+initial e nula
+0 0 0
+0 0 0
+0 0 0
+
+ex clasa 1, modelul prezice 2 - rand clasa reala, coloana data de predictie
+
+0 1 0
+0 0 0
+0 0 0
+
+!  Ideea: sa fie cat mai multe pe diagonala principala (toate pentru acc de 100%)
+ACC= suma diag princ / suma pe matrice 
+
+
+
+Exercitiul 1:
+
+
+1F
+2F
+1F
+3F
+3B
+3B
+3B
+4B
+
+probabilit ca o pers sa fie b sau f avand inaltimea 78
+P(F|H=3) = P(H=3 | F) * P(F) / P(H=3)
+P(H=3|F) = 1/4
+P(F) = 4/8= 1/2 			(nr tot fete/nr pers)
+P(H=3) = 4/8 = 1/2
+P(B | H=3) = 1-1/4= 3/4
+
+
+
+
+
+
+
+
+
+
+
+
+

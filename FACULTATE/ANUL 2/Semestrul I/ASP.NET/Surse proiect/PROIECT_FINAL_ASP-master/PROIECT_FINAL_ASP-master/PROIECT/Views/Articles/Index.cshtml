@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Afisare articole</h2>
+<br />
+
+@if (TempData["message"] != null)
+{
+    <h2 class="alert-success">@ViewBag.Msg</h2>
+
+}
+
+
+<br />
+
+
+<form method="GET">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control"
+               placeholder="Search topics or keywords" name="search"
+               value="@ViewBag.SearchString">
+        <button class="btn btn-outline-success"
+                type="submit">
+            Search
+        </button>
+    </div>
+</form>
+
+<br />
+
+
+@*formular pentru ales domeniul pentru care afisez toate articolele*@
+<form method="GET">     
+    <div class="input-group mb-3">
+        
+        <label for="domain">Alege un domeniu:</label>
+
+        <select name="domain" id="domain">
+            @foreach (var dom in ViewBag.Domains)
+            {
+                <option value="@(dom.Value)">@dom.Text</option>
+            }
+        </select>
+
+        <button class="btn btn-outline-success"
+                type="submit">
+            alege
+        </button>
+    </div>
+</form>
+
+
+@*mergea var daca nu era un partial sau o colectie *@
+
+@* Afisarea paginata a articolelor *@
+<div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link"
+                   href="@ViewBag.PaginationBaseUrl=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            @for (int i = 1; i <= ViewBag.lastPage; i++)
+            {
+                <li class="page-item">
+                    <a class="page-link"
+                   href="@ViewBag.PaginationBaseUrl=@i">@(i)</a>
+                </li>
+            }
+
+            <li class="page-item">
+                <a class="page-link"
+                   href="@ViewBag.PaginationBaseUrl=@(ViewBag.lastPage)" arialabel="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+@foreach (PROIECT.Models.Article article in ViewBag.Articles)
+{
+    <div class="card">
+
+        @Html.Partial("ArticleInfo", article )
+
+        <a class="btn btn-success" href="/Articles/Show/@article.Id">Afisare articol</a>
+    </div>
+
+    <br />
+    <br />
+}
+
+                

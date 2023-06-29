@@ -1,0 +1,143 @@
+
+html {
+    font-family:'Helvetica';
+}
+
+body {
+   background-color: rgb(102, 102, 102);
+   margin: 0px;
+}
+
+.title a{
+    color: rgb(252, 255, 88);
+    text-shadow: 2px 2px #000000;
+    text-align: center;
+}
+.header {
+    background-image: src="trabant.jpg";
+    background-repeat: no-repeat;
+    text-align: center;
+    
+}
+.option h2{
+    color:aliceblue;
+    font-size: 15px ;
+}
+.subtitle h2{
+    color:white;
+    text-align: center;
+}
+
+.section-title {
+    color: rgb(255, 251, 0);
+    
+    text-align: left;
+    
+}
+.option {
+    text-align: center;
+}
+
+.option-item {
+    color:white;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.option-item:hover {
+    background-color: rgb(130, 131, 78);
+    text-decoration: wavy;
+}
+.footer {
+    padding-top: 100px;
+    padding-bottom: 150px;
+
+    padding-left: 55px;
+    padding-right: 55px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.footer p{
+    color: rgb(255, 251, 0);
+    text-align: center;
+}
+.footer h2{
+    color: rgb(255, 251, 0);
+    text-align: center;
+}
+
+
+.content-subtitle{
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-weight: 1000;
+    padding-top:5%;
+}
+
+.content-text {
+    padding-right: 35px;
+    font-size: 17px;
+    padding-left: 35px;
+}
+
+.content-class-style{
+    background: none;
+    color: rgb(70, 70, 70);
+    display: grid;
+    grid-template-columns: 40% 60%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pag-class{
+    background: none;
+    color: rgb(70, 70, 70);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pag-class h3{
+    font-size: 30px;
+    letter-spacing: 1px;
+    font-weight: 1000;
+    padding-top:5%;
+    text-align: center;
+
+}
+.image-class {
+    order:-1;
+    padding-left: 10%;
+    padding-top: 15%;
+}
+.image-style{
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+}
+@media (max-width: 990px) {
+    .content-class-style {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        padding-left: 10%;
+    }
+    .image-class {
+        order: 1;
+        padding-right: 10%;
+    }
+    .image-style {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-subtitle-text {
+        padding-right: 5%;
+    }
+}

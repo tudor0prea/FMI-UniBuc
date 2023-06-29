@@ -1,0 +1,11 @@
+﻿@model Modeltest2021.Models.GiftCard
+@if (ViewBag.message != null)
+{
+    <h2 class="alert-success p-3 rounded-3 text-center mb-5">@ViewBag.message</h2>
+}
+<h2>Afisare articol </h2>
+
+@Html.Partial("GiftCardInfo", @Model)
+
+<a href="/GiftCards/Edit/@Model.Id" class="btn btn-success">Modifica acest card</a>
+<a href="/GiftCards/Delete/@Model.Id" class="btn btn-danger">Sterge acest card</a>

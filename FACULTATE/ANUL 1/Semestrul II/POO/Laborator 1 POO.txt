@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{int a, b, i, j, s;
+//problema 0 +citire
+cin>>a>>b;
+cout<<a+b<<" ";
+
+//problema 1
+for(i=a;i<=b;i++)
+ {   s=0;
+    for(j=1;j<i;j++)
+        if(i%j==0)
+            s+=j;
+    if(s==i)
+        cout<<i<<" ";
+ }      
+return 0;
+}
+
+
+
+
+
+
+//problema 2
+struct cerc{ float raza, h; } 
+struct dreptunghi { float L, l, h; }
+struct patrat{ float l, h;}
+struct triunghi_dreptunghic { float c, C, h;}

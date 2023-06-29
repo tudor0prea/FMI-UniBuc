@@ -1,0 +1,48 @@
+﻿@using ModelMare.Models
+<br />
+@if (ViewBag.Message != null)
+{
+    <h2 class="alert-success p-3 rounded-3 text-center mb-5">@ViewBag.Message</h2>
+}
+
+<br />
+
+<h2>Afisare Articole</h2>
+
+@foreach (Product product in ViewBag.Products)
+{
+    <div class="card">
+
+        @Html.Partial("ProductInfo", product )
+
+
+        <a class="btn btn-success" href="/Products/Show/@product.Id">Afisare product</a>
+
+    </div>
+
+    <br />
+    <br />
+}
+
+<div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="/Products/Index/?page=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            @for (int i = 1; i <= ViewBag.lastPage; i++)
+            {
+                <li class="page-item"> <a class="page-link" href="/Products/Index/?page=@i">@(i)</a> </li>
+            }
+
+            <li class="page-item">
+                <a class="page-link" href="/Products/Index/?page=@(ViewBag.lastPage)" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

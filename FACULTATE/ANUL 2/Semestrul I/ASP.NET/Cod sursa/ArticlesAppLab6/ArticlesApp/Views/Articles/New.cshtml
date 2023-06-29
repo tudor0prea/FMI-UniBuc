@@ -1,0 +1,87 @@
+﻿@model ArticlesApp.Models.Article
+@{
+    ViewBag.Title = "New";
+}
+
+
+<h2>Adaugare articol</h2>
+<br />
+
+<h2 class="text-center mt-5">Adaugare articol</h2>
+<br />
+<div class="container mt-5">
+<div class="row">
+<div class="col-6 offset-3">
+<form method="post" action="/Articles/New">
+@Html.Label("Title", "Titlu Articol")
+<br />
+@Html.TextBox("Title", null, new { @class = "formcontrol"
+})
+                <br /><br />
+                @Html.Label("Content", "Continut Articol")
+                <br />
+                @Html.TextArea("Content", null, new { @class = "formcontrol"
+                })
+                <br /><br />
+                <label>Selectati categoria</label>
+                @Html.DropDownListFor(m => m.CategoryId, new
+                SelectList(Model.Categ, "Value", "Text"),
+                "Selectati categoria", new { @class = "form-control"
+                })
+                <br />
+                <button class="btn btn-success" type="submit">
+                    Adauga
+                    articol
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+ @*   <label>Titlu articol</label>
+    <input type="text" name="Title" />
+    <br />
+    <br />
+
+    <label>Continut articol</label>
+    <textarea name="Content"></textarea>
+    <br />
+    <br />
+
+    <input type="hidden" name="Date" value="@DateTime.Now" />
+    <br />
+    
+    @Html.Label("Title", "Titlu Articol")
+    <br />
+    @Html.TextBox("Title", null, new { @class = "formcontrol"
+    })
+    <label>Selectati categoria</label>
+
+    
+    Proprietatea name primeste valoarea CategoryId, si anume id-ul categoriei, fiind atributul care
+    se paseaza catre Controller prin post
+    Proprietatea value are id-ul categoriei si valoarea care se afiseaza in dropdown (numele categoriei)
+    
+
+    <select name="CategoryId">
+
+        @foreach (var item in ViewBag.Categories)
+        {
+            <option value="@item.Id">@item.CategoryName</option>
+        }
+
+    </select> *@
+
+    @*HELPER!
+
+    @Html.DropDownListFor(m => m.CategoryId, 
+     new SelectList(Model.Categ, "Value", "Text"), "Selectati categoria", new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-success" type="submit">Adauga articol</button>
+    
+</form>
+
+    *@
