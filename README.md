@@ -2,7 +2,7 @@
 
 ## ⭐ Descriere
 
-Am încărcat aici toate materialele strânse până acum în IDEEA că poate vă vor folosi și vouă. Repository-ul va fi updatat în continuare și voi mai adăuga și materiale din trecut. 
+Am încărcat aici toate materialele strânse până acum în ideea că poate vă vor folosi și vouă. Repository-ul va fi updatat în continuare și voi mai adăuga și materiale din trecut. 
 
 ## 🎢 Ce conține?
 
