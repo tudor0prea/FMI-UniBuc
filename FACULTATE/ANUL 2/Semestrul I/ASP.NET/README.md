@@ -1,4 +1,4 @@
 # 🎢 Dezvoltarea Aplicatiilor Web
-prof. [Cezara Benegui](www.cezarabenegui.com)
+prof. [Cezara Benegui](https://www.cezarabenegui.com/) <br>
 
-## [Academie](www.cezarabeneguiacademy.com)
+Alte cursuri de la doamna Cezara se gasesc pe [siteul academiei](https://cezarabeneguiacademy.com/)
