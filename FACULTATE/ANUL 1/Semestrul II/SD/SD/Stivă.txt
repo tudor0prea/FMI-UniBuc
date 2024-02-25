@@ -1,0 +1,74 @@
+#include "stack.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Initializeaza o stiva. (0.5 p)
+Stack *init_stack()
+{
+    Stack *stack;
+    stack = (Stack *)malloc(sizeof(Stack));
+    stack->top = NULL;
+    stack->size = 0;
+
+    return stack;
+}
+
+// Returneaza 1 daca stiva este goala si 0 in caz contrar. (0.5 puncte)
+int is_empty_stack(Stack *s)
+{
+    if (s->top == NULL)
+        return 1;
+
+    return 0;
+}
+
+// Returneaza numarul de elemente din stiva. (0.5 puncte).
+int stack_size(Stack *s)
+{
+    return s->size;
+}
+
+// Adauga un element in stiva. (0.5 p)
+void push(Stack *s, double x)
+{
+    Node *node;
+    node = (Node *)malloc(sizeof(Node *));
+
+    node->value = x;
+    node->next = s->top;
+    s->top = node;
+    s->size++;
+}
+
+// Sterge (si dezaloca) elementul din varful stivei. (Intoarce 1 daca operatia a reusit si 0 in caz contrar) (0.5 p)
+int pop(Stack *s)
+{
+    if (s->size == 0)
+        return 0;
+
+    Node *node = s->top;
+    s->top = s->top->next;
+    s->size--;
+    free(node);
+    return 1;
+}
+
+// Returneaza elementul din varful stivei. (0.5 puncte)
+double top(Stack *s)
+{
+    return s->top->value;
+}
+
+void print_stack(Stack *s)
+{
+    if (!s)
+        return;
+
+    printf("[");
+    for (Node *it = s->top; it != NULL; it = it->next)
+    {
+        printf("%lf ", it->value);
+    }
+    printf("]");
+}

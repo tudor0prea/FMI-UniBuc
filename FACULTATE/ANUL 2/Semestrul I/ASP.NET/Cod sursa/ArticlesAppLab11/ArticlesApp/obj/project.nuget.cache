@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wO4dyno2ZMOVFOJ0NG8wEKZuJEzbuw5Xk6uEUErcGgNpM2AyWPhl4V32EmdLy1YzyDTlf+X86JbQlv68qjy0uA==",
+  "dgSpecHash": "49K7BG3k1awzHIZ2zalifZeK5zYGqdCZQUBdmLMNwb6aKUk+EhU8SrFcVOaAcvkBNamMVWKcQoDKWaQaoXhSkA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tudor\\OneDrive\\Desktop\\ArticlesAppLab11\\ArticlesApp\\ArticlesApp.csproj",
+  "projectFilePath": "C:\\Users\\Tudor\\OneDrive\\Desktop\\GIT\\FMI-UniBuc\\FACULTATE\\ANUL 2\\Semestrul I\\ASP.NET\\Cod sursa\\ArticlesAppLab11\\ArticlesApp\\ArticlesApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tudor\\.nuget\\packages\\anglesharp\\0.17.1\\anglesharp.0.17.1.nupkg.sha512",
     "C:\\Users\\Tudor\\.nuget\\packages\\anglesharp.css\\0.16.4\\anglesharp.css.0.16.4.nupkg.sha512",
@@ -198,5 +198,16 @@
     "C:\\Users\\Tudor\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Tudor\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'HtmlSanitizer' 8.0.601 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-43cp-6p3q-2pc4",
+      "libraryId": "HtmlSanitizer",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }

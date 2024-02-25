@@ -1,0 +1,87 @@
+#include "queue.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Initializeaza o coada. (0.5 p)
+Queue *init_queue()
+{
+    Queue *q;
+    q = (Queue *)malloc(sizeof(Queue));
+    q->size = 0;
+    q->front = NULL;
+    q->back = NULL;
+
+    return q;
+}
+
+// Returneaza 1 daca coada este goala si 0 in caz contrar. (0.5 puncte)
+int is_empty_queue(Queue *q)
+{
+    if (q->front == NULL)
+        return 1;
+
+    return 0;
+}
+
+// Returneaza numarul de elemente din coada. (0.5 puncte).
+int queue_size(Queue *q)
+{
+    return q->size;
+}
+
+// Adauga un element in coada. (0.5 puncte)
+void enqueue(Queue *q, int x)
+{
+    Node *node;
+    node = (Node *)malloc(sizeof(Node));
+    node->value = x;
+
+    if (q->front == NULL)
+    {
+        q->front = node;
+        q->front->next = NULL;
+        q->back = node;
+        q->size = 1;
+        return;
+    }
+
+    q->back->next = node;
+    q->back = node;
+    q->size++;
+}
+
+// Sterge si dezaloca elementul de la finalul cozii. (Intoarce 1 daca operatia a reusit si 0 in caz contrar) (0.5 puncte)
+int dequeue(Queue *q)
+{
+    if (q->size == 0)
+        return 0;
+
+    Node *node;
+    node = q->front;
+    q->size--;
+    q->front = q->front->next;
+    free(node);
+
+    return 1;
+}
+
+// Returneaza elementul din varful cozii. (0.5 puncte)
+int front(Queue *q)
+{
+    return q->front->value;
+}
+
+// Afiseaza elementele din coada.
+void print_queue(Queue *q)
+{
+    if (!q)
+        return;
+
+    printf("[");
+    for (Node *it = q->front; it != NULL; it = it->next)
+    {
+        printf("%d ", it->value);
+    }
+    printf("]");
+}

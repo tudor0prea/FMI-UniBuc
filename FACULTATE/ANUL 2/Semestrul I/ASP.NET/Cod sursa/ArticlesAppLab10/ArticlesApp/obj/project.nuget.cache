@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/ngfYHHUgu8fJuBJWu75heTBJIdGIgcw18noqiOZpi5dZw91giLg5NfBGCWkGGmCNWBOxrUvjsnxLvPW4oAWRw==",
+  "dgSpecHash": "6e9uJ/Pw8Asp1pb81gBKJv3hKyj4b7aAegwKqTgG4IonaRTXYFs9f7kE2pCSeKzPTxI9LjzCNtIjByV9BEhhtQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Tudor\\OneDrive\\Desktop\\ArticlesAppLab10\\ArticlesApp\\ArticlesApp.csproj",
+  "projectFilePath": "C:\\Users\\Tudor\\OneDrive\\Desktop\\GIT\\FMI-UniBuc\\FACULTATE\\ANUL 2\\Semestrul I\\ASP.NET\\Cod sursa\\ArticlesAppLab10\\ArticlesApp\\ArticlesApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tudor\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Tudor\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

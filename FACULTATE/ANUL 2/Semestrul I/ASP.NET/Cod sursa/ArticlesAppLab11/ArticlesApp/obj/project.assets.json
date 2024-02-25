@@ -10987,11 +10987,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Tudor\\OneDrive\\Desktop\\ArticlesAppLab11\\ArticlesApp\\ArticlesApp.csproj",
+      "projectUniqueName": "C:\\Users\\Tudor\\OneDrive\\Desktop\\GIT\\FMI-UniBuc\\FACULTATE\\ANUL 2\\Semestrul I\\ASP.NET\\Cod sursa\\ArticlesAppLab11\\ArticlesApp\\ArticlesApp.csproj",
       "projectName": "ArticlesApp",
-      "projectPath": "C:\\Users\\Tudor\\OneDrive\\Desktop\\ArticlesAppLab11\\ArticlesApp\\ArticlesApp.csproj",
+      "projectPath": "C:\\Users\\Tudor\\OneDrive\\Desktop\\GIT\\FMI-UniBuc\\FACULTATE\\ANUL 2\\Semestrul I\\ASP.NET\\Cod sursa\\ArticlesAppLab11\\ArticlesApp\\ArticlesApp.csproj",
       "packagesPath": "C:\\Users\\Tudor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Tudor\\OneDrive\\Desktop\\ArticlesAppLab11\\ArticlesApp\\obj\\",
+      "outputPath": "C:\\Users\\Tudor\\OneDrive\\Desktop\\GIT\\FMI-UniBuc\\FACULTATE\\ANUL 2\\Semestrul I\\ASP.NET\\Cod sursa\\ArticlesAppLab11\\ArticlesApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -11074,8 +11074,20 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'HtmlSanitizer' 8.0.601 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-43cp-6p3q-2pc4",
+      "libraryId": "HtmlSanitizer",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }
