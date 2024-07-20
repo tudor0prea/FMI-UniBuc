@@ -1,5 +1,9 @@
 # FMI-UniBuc
 
+## 🎓 Update 07.2024
+#### Odată cu absolvirea facultății, am decis să menționez aici și [link-ul către github-ul unde mi-am încărcat licența](https://github.com/tudor0prea/LucrareLicenta), dar vă incurajez întăi să urmăriți [prezentarea](https://docs.google.com/presentation/d/14FjTOrpdGtBVSZv32ACNvUNOXNPlb7ZpdBqTVlHPjNg/edit#slide=id.g6f39c49baf_3_2) pe care am susținut-o și [documentația trimisă](https://docs.google.com/document/d/1IFAcG4iPyCY8mt-kL5VSASKCXhYPJFWAdGdBa43ehww/edit?usp=sharing). Sper sincer să vă fie de ajutor!
+
+
 ## ⭐ Descriere
 
 Am încărcat aici toate materialele strânse până acum în ideea că poate vă vor folosi și vouă. Repository-ul va fi updatat în continuare și voi mai adăuga și materiale din trecut. 
